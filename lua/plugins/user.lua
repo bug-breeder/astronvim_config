@@ -82,4 +82,57 @@ return {
       )
     end,
   },
+  -- my plugins 
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end
+  },
+  {
+    "CRAG666/code_runner.nvim",
+    config = function()
+      require('code_runner').setup {
+        -- mode = "toggleterm",
+        filetype = {
+          java = {
+            "cd $dir &&",
+            "javac $fileName &&",
+            "java $fileNameWithoutExt"
+          },
+          python = "python3 -u",
+          typescript = "deno run",
+          rust = {
+            "cd $dir &&",
+            "rustc $fileName &&",
+            "./$fileNameWithoutExt"
+          },
+          javascript = "node $fileName",
+          -- cpp="gcc $fileName -lstdc++ -o $fileNameWithoutExt && $fileNameWithoutExt"
+          cpp = {
+            "cd $dir &&",
+            "rm -f $fileNameWithoutExt &&",
+            "g++ -g $fileName -std=c++17 -o $fileNameWithoutExt &&",
+            "echo -e \"\\e[1;32mOutput:\\e[1;0m\" &&",
+            "./$fileNameWithoutExt"
+          },
+          scss = "sass $dir/$fileName $dir/$fileNameWithoutExt.css",
+        },
+      }
+    end,
+    ft = { 'cpp', 'python', 'java', 'javascript', 'rust', 'scss' },
+    -- lazy = true,
+  },
+  {
+    "ray-x/lsp_signature.nvim",
+    lazy = false,
+    config = function()
+      -- require('lsp_signature').load()
+      require "lsp_signature".on_attach()
+    end,
+  },
 }
