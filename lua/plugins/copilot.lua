@@ -10,7 +10,7 @@ return {
       debounce = 150,
       keymap = {
         -- accept = "<M-;>",
-        accept = "<C-CR>",
+        accept = "<C-;>",
         accept_word = false,
         accept_line = false,
         next = "<M-]>",
