@@ -9,8 +9,7 @@ return {
       auto_trigger = true,
       debounce = 150,
       keymap = {
-        -- accept = "<M-;>",
-        accept = "<C-;>",
+        accept = "<M-;>",
         accept_word = false,
         accept_line = false,
         next = "<M-]>",
